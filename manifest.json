@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Screen to PDF (A4)",
+  "version": "0.1.0",
+  "description": "画面の見た目のままA4で印刷（PDFはダイアログから保存）",
+  "permissions": [
+    "scripting",
+    "activeTab"
+  ],
+  "action": {
+    "default_title": "Export screen-like PDF"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "export-pdf": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Export screen-like PDF"
+    }
+  }
+}
