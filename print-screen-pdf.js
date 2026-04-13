@@ -73,6 +73,11 @@
               display:none !important;
             }
 
+            /* コンテンツナビゲーションバー（前後チャプターリンク等）は消す */
+            nav[aria-label="Content navigation"], [data-testid="statusBar"] {
+              display:none !important;
+            }
+
             /* 余計な左右パディングを念のため 0 に */
             .reader, .reader-container, .ucv, .ucv-container, .content, .article, .chapter {
               padding-left:0 !important; padding-right:0 !important;
