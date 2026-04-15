@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>テーブル印刷確認</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+      background: #f3f6f9;
+      color: #1d252d;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .panel {
+      background: white;
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 24px 60px rgba(15, 28, 44, 0.08);
+    }
+
+    .table-wrap {
+      overflow: auto;
+      border: 1px solid #d9e1ea;
+      border-radius: 18px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 1280px;
+      border-collapse: collapse;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background: #14324a;
+      color: white;
+    }
+
+    th, td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #dde5ee;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f8fbfd;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="panel">
+      <h1>横長テーブルの印刷確認</h1>
+      <p>sticky なヘッダーと広い列幅を持つテーブルです。印刷時に横スクロール前提のUIが崩れるかを確認します。</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>章</th>
+              <th>トピック</th>
+              <th>概要</th>
+              <th>想定読了時間</th>
+              <th>サンプル数</th>
+              <th>補足</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>導入</td><td>目的と制約の整理</td><td>12分</td><td>3</td><td>最初の前提確認</td></tr>
+            <tr><td>2</td><td>CSS整理</td><td>max-width / overflow の見直し</td><td>18分</td><td>6</td><td>紙幅を超えやすい</td></tr>
+            <tr><td>3</td><td>sticky要素</td><td>position の解除確認</td><td>10分</td><td>4</td><td>重なりを起こしやすい</td></tr>
+            <tr><td>4</td><td>テーブル</td><td>折り返しと縮小方針</td><td>20分</td><td>8</td><td>列ごとの優先順位が必要</td></tr>
+            <tr><td>5</td><td>画像</td><td>比率維持と縮小</td><td>14分</td><td>5</td><td>高解像度画像も確認</td></tr>
+            <tr><td>6</td><td>回帰確認</td><td>差分スクショの見方</td><td>16分</td><td>4</td><td>Codex共有用</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>印刷レイアウト確認ページ</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe6;
+      --paper: #fffdf8;
+      --ink: #1d1d1f;
+      --accent: #9f4f2a;
+      --line: #d3c5b5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(159, 79, 42, 0.18), transparent 26%),
+        linear-gradient(180deg, #f9f5ee 0%, var(--bg) 100%);
+      min-height: 100vh;
+    }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 48px 24px 64px;
+    }
+
+    .hero {
+      background: rgba(255, 253, 248, 0.88);
+      border: 1px solid rgba(159, 79, 42, 0.2);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 18px 45px rgba(78, 51, 32, 0.08);
+    }
+
+    .links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    a.card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    a.card:hover {
+      border-color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <p>ローカルで印刷崩れを確認するためのテストページです。</p>
+      <h1>Chrome拡張の印刷レイアウト確認</h1>
+      <p>以下のページを Playwright と Chrome DevTools で確認します。</p>
+    </section>
+
+    <section class="links">
+      <a class="card" href="/article.html">
+        <h2>article.html</h2>
+        <p>長文、サイドバー、コードブロック、固定ヘッダーを含むページです。</p>
+      </a>
+      <a class="card" href="/table.html">
+        <h2>table.html</h2>
+        <p>横幅が大きいテーブルと sticky な列ヘッダーを含みます。</p>
+      </a>
+      <a class="card" href="/media.html">
+        <h2>media.html</h2>
+        <p>画像、カード、擬似的な広告枠を含むページです。</p>
+      </a>
+    </section>
+  </div>
+</body>
+</html>

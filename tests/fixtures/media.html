@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>メディア印刷確認</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+      color: #112031;
+      background:
+        linear-gradient(135deg, rgba(33, 92, 120, 0.12), transparent 32%),
+        linear-gradient(180deg, #f4fbff 0%, #e8f2f7 100%);
+    }
+
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 48px 24px 72px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .panel {
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(17, 32, 49, 0.08);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 24px 60px rgba(17, 32, 49, 0.08);
+    }
+
+    .visual {
+      aspect-ratio: 16 / 9;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.7), transparent 20%),
+        linear-gradient(135deg, #2f8cbf 0%, #24516c 46%, #14212f 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .visual::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      border-radius: 20px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #112031;
+      color: white;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.85rem;
+    }
+
+    .ad {
+      margin-top: 24px;
+      border: 2px dashed rgba(17, 32, 49, 0.16);
+      border-radius: 18px;
+      padding: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <div class="panel">
+        <span class="badge">画像・カード・広告枠</span>
+        <h1>メディア中心ページの印刷確認</h1>
+        <p>画像風のビジュアル、カード群、印刷時には不要になりやすい広告枠を含めた確認用ページです。画像の縮小や余白バランスを見ます。</p>
+      </div>
+      <div class="visual" aria-hidden="true"></div>
+    </section>
+
+    <section class="cards">
+      <article class="panel">
+        <h2>カード 1</h2>
+        <p>メディアページの本文カードです。余白と改ページ位置を見ます。</p>
+      </article>
+      <article class="panel">
+        <h2>カード 2</h2>
+        <p>複数カラム構成が 1 カラム化されても読みやすさを維持できるかを見ます。</p>
+      </article>
+      <article class="panel">
+        <h2>カード 3</h2>
+        <p>背景と境界線が印刷時に潰れすぎていないかを見ます。</p>
+      </article>
+    </section>
+
+    <section class="panel ad">
+      <h2>擬似広告枠</h2>
+      <p>印刷では不要になりやすい補助要素の代替です。必要に応じて `.ad` を印刷非表示対象に加える判断材料になります。</p>
+    </section>
+  </div>
+</body>
+</html>

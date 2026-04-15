@@ -1,0 +1,5 @@
+node_modules/
+.tmp/
+artifacts/playwright-report/
+artifacts/test-results/
+artifacts/print-screens/

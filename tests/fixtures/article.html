@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>長文記事の印刷確認</title>
+  <style>
+    :root {
+      --bg: #f7f3ee;
+      --paper: #fffefa;
+      --ink: #202124;
+      --sub: #66584f;
+      --accent: #bb5a33;
+      --line: #dfd4c7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #fbf7f1 0%, var(--bg) 100%);
+      color: var(--ink);
+      font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(251, 247, 241, 0.9);
+      border-bottom: 1px solid rgba(32, 33, 36, 0.08);
+      padding: 14px 24px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 24px 80px;
+    }
+
+    article {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 24px 60px rgba(55, 41, 32, 0.08);
+    }
+
+    aside {
+      align-self: start;
+      position: sticky;
+      top: 80px;
+      background: rgba(255, 254, 250, 0.9);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    p, li {
+      line-height: 1.9;
+      color: var(--sub);
+    }
+
+    pre {
+      background: #231f1c;
+      color: #f8f0e5;
+      padding: 20px;
+      border-radius: 16px;
+      overflow: auto;
+    }
+
+    blockquote {
+      margin: 24px 0;
+      padding: 20px 24px;
+      border-left: 4px solid var(--accent);
+      background: rgba(187, 90, 51, 0.08);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    印刷崩れ確認用の固定ヘッダー
+  </header>
+  <main class="layout">
+    <article>
+      <p>検証用カテゴリ / 印刷 / 長文ページ</p>
+      <h1>長文記事の印刷レイアウト確認</h1>
+      <p>このページには、固定ヘッダー、サイドバー、コードブロック、引用、長い段落を含めています。印刷用のスタイルが適用されたときに、本文が紙幅いっぱいに再配置されるかを確認するための素材です。</p>
+
+      <h2>セクション 1</h2>
+      <p>印刷時の右余白や横スクロールの原因になりやすいのは、固定幅コンテナ、sticky 要素、grid / flex による複数カラム構成です。このサンプルでは、それらを同時に含めて、崩れ方の確認ができるようにしています。</p>
+      <p>また、長文ページでは LazyLoad 対策として一度最下部までスクロールさせる実装が効くケースがあります。Playwright 上でも同じ処理を通すことで、拡張本番と近い状態を再現できます。</p>
+      <blockquote>印刷確認では、レイアウトが正しいかだけでなく、余計なナビゲーションや補助UIが紙面に残っていないかも見ます。</blockquote>
+
+      <h2>セクション 2</h2>
+      <p>次のコードブロックは、印刷時に折り返しが効くかを確認する目的です。横幅の長い 1 行コードが紙からはみ出さないことを見ます。</p>
+      <pre><code>const longLine = "このコードブロックは印刷時の折り返し確認用です".repeat(8) + " / sticky sidebar / fixed header / grid layout / overflow visible";</code></pre>
+
+      <h2>セクション 3</h2>
+      <p>さらに複数段落を並べて、ページ分割時に見出しやカードが不自然にちぎれないかも確認します。必要であれば、ここにさらにテストケースを追加してください。</p>
+      <p>長い段落その1。印刷物として読める余白と横幅に収まっているか、フォントサイズが極端に小さくなっていないか、画像や表が縮小されすぎていないかなども見ます。</p>
+      <p>長い段落その2。表示用 UI と印刷用 UI の分離が不十分だと、固定ボタンやパンくずリストが混ざりやすくなります。そうした要素が印刷から外れているかも確認ポイントです。</p>
+      <p>長い段落その3。Playwright で自動保存された画像は、Codex にそのまま渡して比較相談するための基礎資料になります。</p>
+    </article>
+
+    <aside>
+      <h2>サイドバー</h2>
+      <p>印刷時には消える想定の補助カラムです。</p>
+      <ul>
+        <li>目次</li>
+        <li>広告枠</li>
+        <li>関連リンク</li>
+      </ul>
+    </aside>
+  </main>
+</body>
+</html>

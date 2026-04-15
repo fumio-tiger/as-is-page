@@ -44,10 +44,15 @@
 ### ファイル構成
 ```
 as-is-page/
-├── manifest.json          # 拡張機能の設定ファイル
-├── background.js          # バックグラウンドスクリプト
-├── print-screen-pdf.js    # メインの印刷処理スクリプト
-└── README.md             # このファイル
+├── manifest.json              # 拡張機能の設定ファイル
+├── background.js              # バックグラウンドスクリプト
+├── print-layout-core.js       # 印刷レイアウト共通処理
+├── print-screen-pdf.js        # 印刷ダイアログ実行用ラッパー
+├── tests/fixtures/            # 印刷確認用のローカルHTML
+├── tests/e2e/                 # Playwright のスクリーンショット確認
+├── artifacts/print-screens/   # Codex共有用の画像出力先
+├── docs/devtools-workflow.md  # DevTools確認手順
+└── README.md                  # このファイル
 ```
 
 ### 主要機能
@@ -55,6 +60,37 @@ as-is-page/
 - **要素の非表示**: サイドバー、広告、目次などの不要要素を非表示
 - **LazyLoad対策**: 遅延読み込みコンテンツの完全表示
 - **エラーハンドリング**: 印刷失敗時の適切なエラーメッセージ
+
+## ローカル開発環境
+
+印刷レイアウトの見た目を詰めるために、次の開発環境を同梱しています。
+
+- **Playwright**: 印刷用CSSを適用した状態のスクリーンショットを自動保存
+- **ローカル検証ページ**: 長文、テーブル、メディアの3パターンを同梱
+- **Chrome DevTools補助**: 拡張を読み込んだChromeをローカルページ付きで起動
+- **スクリーンショット共有運用**: `artifacts/print-screens/` に画像を集約
+
+### セットアップ
+
+1. `npm install`
+2. `npx playwright install chromium`
+
+### 主要コマンド
+
+- `npm run test:print`
+  - ローカルHTMLに印刷用CSSを適用して、スクリーンショットを保存します
+- `npm run test:print:ui`
+  - Playwright UI で確認しながら実行します
+- `npm run inspect:chrome`
+  - 拡張を読み込んだChromeをローカル確認ページ付きで起動します
+
+### 生成されるスクリーンショット
+
+- `artifacts/print-screens/article-print.png`
+- `artifacts/print-screens/table-print.png`
+- `artifacts/print-screens/media-print.png`
+
+詳細な確認手順は [docs/devtools-workflow.md](/Users/fumio/Documents/Codes/as-is-page/docs/devtools-workflow.md) を参照してください。
 
 ## トラブルシューティング
 

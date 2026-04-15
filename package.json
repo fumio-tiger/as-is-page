@@ -1,0 +1,16 @@
+{
+  "name": "as-is-page",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Chrome拡張の印刷レイアウト確認用ローカル開発環境",
+  "scripts": {
+    "serve:fixtures": "python3 -m http.server 4173 --directory tests/fixtures",
+    "test:print": "playwright test",
+    "test:print:ui": "playwright test --ui",
+    "test:print:headed": "playwright test --headed",
+    "inspect:chrome": "node scripts/open-chrome-dev.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1"
+  }
+}
